@@ -2,6 +2,35 @@
 
 A simple SQL database project for managing tasks, projects, and users.
 
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in-GitHub%20Codespaces-blue?logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=sravani-945/SQL)
+[![Try on SQLite Online](https://img.shields.io/badge/Try%20on-SQLite%20Online-orange?logo=sqlite)](https://sqliteonline.com/)
+
+## Demo
+
+This project can be demoed in multiple ways:
+
+### 1. Try Online with GitHub Codespaces
+
+The easiest way to run this project is using GitHub Codespaces:
+
+1. Click the "Open in GitHub Codespaces" badge above
+2. Wait for the environment to load (it looks like VS Code in your browser)
+3. Open a terminal and run:
+   ```bash
+   chmod +x run_database.sh
+   ./run_database.sh
+   ```
+4. Interact with the demo menu to explore different queries
+
+### 2. Try Online with SQLite Online
+
+You can also explore the database using [SQLite Online](https://sqliteonline.com/):
+
+1. Visit [SQLite Online](https://sqliteonline.com/)
+2. Copy and paste the contents of `init_database.sql` into the editor
+3. Click "Run" to create and populate the database
+4. Try running queries from `queries.sql` to explore the data
+
 ## Project Structure
 
 - `schema.sql`: Database schema definition with tables for users, projects, tasks, tags, and comments
@@ -21,6 +50,8 @@ The database consists of the following tables:
 - **Tags**: Categorizes tasks
 - **TaskTags**: Junction table for the many-to-many relationship between tasks and tags
 - **Comments**: Stores comments on tasks
+
+![Database Schema](https://mermaid.ink/img/pako:eNqNksFqwzAMhl_F-JQVkrRNCg3JodDB2I7bYbeQg5pqDUtiY8tjo-Tdp9RptwyWXWzhn_8PIclDJJQhimpqNNw5Jc2OZnYsmgOZyvyR7Ygb0xY3YXS_PnqQ9eWieMxvixNPL6A6g9LU1tLe8BuUbnLjHFQtEQWnxLdaGH4FWcMGDFI-KD8uVr5s1NQ54tHXRQnnQ_zFEI9TH5XWktcnP5VQxYxdSOTAG9uBw8DWCBmDNL54R5jzvDc5pOlGdkI6YNFEYyH9U10BuoNWJUwTUfUWGnRCMhFJv4TTXP35xnlq0eLbVXkQ9T8TGsaLGaU8qB4_eYT5BxsbtVA)
 
 ## How to Use
 
@@ -86,6 +117,35 @@ The `queries.sql` file contains example queries for common operations:
 10. Deleting tasks with related records
 
 You can run these queries individually or modify them as needed for your use case.
+
+## Example Query Results
+
+Here are some example results from running the queries:
+
+### Tasks for User 1
+```
+task_id  title                  status       priority  due_date    project_name
+-------  ---------------------  -----------  --------  ----------  -------------
+3        Prepare presentation   in_progress  3         2023-12-08  Work Tasks
+2        Buy paint supplies     pending      1         2023-12-10  Home Renovation
+```
+
+### Tasks with 'urgent' tag
+```
+task_id  title                status
+-------  -------------------  -----------
+3        Prepare presentation in_progress
+```
+
+### Project Progress Overview
+```
+project_name      total_tasks  completed_tasks  in_progress_tasks  pending_tasks
+---------------   -----------  ---------------  -----------------  -------------
+Work Tasks        1            0                1                  0
+Home Renovation   1            0                0                  1
+Learning SQL      2            0                1                  1
+Vacation Planning 1            1                0                  0
+```
 
 ## Extending the Project
 
